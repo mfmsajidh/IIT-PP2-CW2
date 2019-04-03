@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.WelcomeController">
    <children>
-      <Button layoutX="277.0" layoutY="211.0" mnemonicParsing="false" text="Login" />
+      <Button fx:id="btn_login" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" onAction="#goToEmployeeDetails" text="Login" />
       <Label layoutX="194.0" layoutY="146.0" text="Username" />
       <Label layoutX="194.0" layoutY="175.0" text="Password" />
       <TextField layoutX="258.0" layoutY="142.0" />
