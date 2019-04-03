@@ -13,7 +13,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="10.0" layoutY="38.0" prefHeight="200.0" prefWidth="566.0">
+      <TableView layoutX="17.0" layoutY="38.0" prefHeight="200.0" prefWidth="566.0">
         <columns>
           <TableColumn prefWidth="40.0" text="ID" />
           <TableColumn prefWidth="150.0" text="Name" />
