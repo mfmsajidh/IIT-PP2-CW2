@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
@@ -25,6 +26,11 @@ public class WelcomeController {
         Parent root = FXMLLoader.load(getClass().getResource("../FXML/EmployeeDetails.fxml"));
         primaryStage.setTitle("Employee Details");
         primaryStage.setScene(new Scene(root, 600, 400));
+
+        //Sets an icon for the application
+        Image applicationIcon = new Image(getClass().getResourceAsStream("../Images/Logo.png"));
+        primaryStage.getIcons().add(applicationIcon);
+
         primaryStage.show();
 
     }
