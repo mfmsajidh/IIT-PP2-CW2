@@ -8,6 +8,10 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.CustomerDetailsController">
    <children>
+      <Label layoutX="244.0" layoutY="19.0" text="Customer Details" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
       <TableView layoutX="34.0" layoutY="39.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
           <TableColumn prefWidth="40.0" text="ID" />
@@ -15,9 +19,5 @@
             <TableColumn prefWidth="110.0" text="Column X" />
         </columns>
       </TableView>
-      <Label layoutX="244.0" layoutY="19.0" text="Customer Details" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
    </children>
 </AnchorPane>
