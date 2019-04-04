@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/Welcome.fxml"));
-        primaryStage.setTitle("Computer Consultancy Firm");
+        primaryStage.setTitle("BeGOOD Inc. - Login");
         primaryStage.setScene(new Scene(root, 600, 400));
 
         //Sets an icon for the application

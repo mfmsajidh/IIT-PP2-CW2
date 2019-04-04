@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.EmployeeDetailsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.EmployeeDetailsController">
    <children>
-      <Label layoutX="243.0" layoutY="23.0" text="Employee Details">
+      <Label layoutX="245.0" layoutY="62.0" text="Employee Details">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <TableView layoutX="35.0" layoutY="43.0" prefHeight="200.0" prefWidth="531.0">
+      <TableView layoutX="35.0" layoutY="82.0" prefHeight="237.0" prefWidth="531.0">
         <columns>
             <TableColumn prefWidth="40.0" text="ID" />
           <TableColumn prefWidth="180.0" text="Name" />
@@ -22,5 +25,17 @@
             <TableColumn prefWidth="75.0" text="Salary" />
         </columns>
       </TableView>
+      <HBox alignment="CENTER" layoutX="36.0" layoutY="14.0" prefHeight="45.0" prefWidth="531.0" spacing="20.0">
+         <children>
+            <Button fx:id="btn_employees" disable="true" mnemonicParsing="false" text="Employees" />
+          <Button fx:id="btn_contracts" mnemonicParsing="false" onAction="#goToContractDetails" prefHeight="25.0" text="Contracts" />
+            <Button fx:id="btn_customers" mnemonicParsing="false" onAction="#goToCustomerDetails" text="Customers" />
+            <Button fx:id="btn_jobRoles" mnemonicParsing="false" onAction="#goToJobRoleDetails" text="Job Roles" />
+            <Button fx:id="btn_jobTypes" mnemonicParsing="false" onAction="#goToJobTypeDetails" text="Job Types" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
    </children>
 </AnchorPane>
