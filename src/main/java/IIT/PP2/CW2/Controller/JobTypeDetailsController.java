@@ -21,6 +21,26 @@ public class JobTypeDetailsController {
 
     private Stage primaryStage = new Stage();
 
+    public void goToEmployeeDetails() throws Exception{
+//        Gets the current window
+        Stage currentStage = (Stage)btn_employees.getScene().getWindow();
+
+//        Closes the current window
+        currentStage.close();
+
+//        Loads the job type details window
+        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetails.fxml"));
+        primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
+        primaryStage.setScene(new Scene(root, 600, 400));
+
+//        Sets an icon for the application
+        Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
+        primaryStage.getIcons().add(applicationIcon);
+
+        primaryStage.show();
+
+    }
+
     public void goToContractDetails() throws Exception{
 //        Gets the current window
         Stage currentStage = (Stage)btn_contracts.getScene().getWindow();
@@ -81,24 +101,5 @@ public class JobTypeDetailsController {
 
     }
 
-    public void goToEmployeeDetails() throws Exception{
-//        Gets the current window
-        Stage currentStage = (Stage)btn_employees.getScene().getWindow();
-
-//        Closes the current window
-        currentStage.close();
-
-//        Loads the job type details window
-        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetails.fxml"));
-        primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
-        primaryStage.setScene(new Scene(root, 600, 400));
-
-//        Sets an icon for the application
-        Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
-        primaryStage.getIcons().add(applicationIcon);
-
-        primaryStage.show();
-
-    }
 
 }

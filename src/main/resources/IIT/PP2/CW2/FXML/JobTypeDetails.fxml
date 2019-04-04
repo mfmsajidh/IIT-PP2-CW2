@@ -28,7 +28,7 @@
             <Button fx:id="btn_contracts" mnemonicParsing="false" onAction="#goToContractDetails" prefHeight="25.0" text="Contracts" />
             <Button fx:id="btn_customers" mnemonicParsing="false" onAction="#goToCustomerDetails" text="Customers" />
             <Button fx:id="btn_jobRoles" mnemonicParsing="false" onAction="#goToJobRoleDetails" text="Job Roles" />
-            <Button fx:id="btn_jobTypes" disable="true" mnemonicParsing="false" onAction="#goToJobTypesDetails" text="Job Types" />
+            <Button fx:id="btn_jobTypes" disable="true" mnemonicParsing="false" text="Job Types" />
          </children>
          <opaqueInsets>
             <Insets />
