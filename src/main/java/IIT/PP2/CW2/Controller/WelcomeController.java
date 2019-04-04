@@ -23,12 +23,12 @@ public class WelcomeController {
         currentStage.close();
 
 //      Loads the employee details window
-        Parent root = FXMLLoader.load(getClass().getResource("../FXML/EmployeeDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetails.fxml"));
         primaryStage.setTitle("Employee Details");
         primaryStage.setScene(new Scene(root, 600, 400));
 
         //Sets an icon for the application
-        Image applicationIcon = new Image(getClass().getResourceAsStream("../Images/Logo.png"));
+        Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
         primaryStage.getIcons().add(applicationIcon);
 
         primaryStage.show();
