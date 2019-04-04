@@ -16,13 +16,13 @@ public class WelcomeController {
     Stage primaryStage = new Stage();
 
     public void goToEmployeeDetails() throws Exception{
-//      get the current window
-        Stage stage = (Stage)btn_login.getScene().getWindow();
+//      Gets the current window
+        Stage currentStage = (Stage)btn_login.getScene().getWindow();
 
-//      close the current window
-        stage.close();
+//      Closes the current window
+        currentStage.close();
 
-//      load the attendance list window
+//      Loads the employee details window
         Parent root = FXMLLoader.load(getClass().getResource("../FXML/EmployeeDetails.fxml"));
         primaryStage.setTitle("Employee Details");
         primaryStage.setScene(new Scene(root, 600, 400));
