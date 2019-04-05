@@ -41,8 +41,6 @@ public class WelcomeController {
         Stage currentStage = (Stage)btn_exit.getScene().getWindow();
         currentStage.close();
     }
-
-
-
+    
 
 }
