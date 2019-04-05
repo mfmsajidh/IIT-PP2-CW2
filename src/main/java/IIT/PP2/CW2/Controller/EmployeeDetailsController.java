@@ -31,7 +31,7 @@ public class EmployeeDetailsController {
 //        Loads the contract details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/ContractDetails.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Contract Details");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 900, 400));
 
 //        Sets an icon for the application
         Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
@@ -51,7 +51,7 @@ public class EmployeeDetailsController {
 //        Loads the customer details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/CustomerDetails.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Customer Details");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 900, 400));
 
 //        Sets an icon for the application
         Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
@@ -71,7 +71,7 @@ public class EmployeeDetailsController {
 //        Loads the job role details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/JobRoleDetails.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Job Role Details");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 900, 400));
 
 //        Sets an icon for the application
         Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
@@ -91,7 +91,7 @@ public class EmployeeDetailsController {
 //        Loads the job type details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/JobTypeDetails.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 900, 400));
 
 //        Sets an icon for the application
         Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));

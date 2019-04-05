@@ -6,16 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.WelcomeController">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.WelcomeController">
    <children>
-      <Button fx:id="btn_login" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" onAction="#goToEmployeeDetails" text="Login" />
-      <Label layoutX="194.0" layoutY="146.0" text="Username" />
-      <Label layoutX="194.0" layoutY="175.0" text="Password" />
-      <TextField layoutX="258.0" layoutY="142.0" />
-      <TextField layoutX="258.0" layoutY="171.0" />
-      <Label layoutX="266.0" layoutY="53.0" text="WELCOME" textAlignment="CENTER">
+      <Button fx:id="btn_login" layoutX="227.0" layoutY="241.0" mnemonicParsing="false" onAction="#goToEmployeeDetails" text="Login" />
+      <Label layoutX="144.0" layoutY="157.0" text="Username" />
+      <Label layoutX="144.0" layoutY="199.0" text="Password" />
+      <TextField layoutX="208.0" layoutY="153.0" promptText="Username" />
+      <TextField layoutX="208.0" layoutY="195.0" promptText="Password" />
+      <Label layoutX="216.0" layoutY="70.0" text="WELCOME" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="177.0" layoutY="35.0" text="BeGOOD Inc." textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>

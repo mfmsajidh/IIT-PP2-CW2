@@ -25,7 +25,7 @@ public class WelcomeController {
 //        Loads the employee details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetails.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Employee Details");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 900, 400));
 
 //        Sets an icon for the application
         Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
