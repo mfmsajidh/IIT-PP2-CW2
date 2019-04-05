@@ -18,6 +18,8 @@ public class EmployeeDetailsController {
     private Button btn_jobRoles;
     @FXML
     private Button btn_jobTypes;
+    @FXML
+    private Button btn_logout;
 
     private Stage primaryStage = new Stage();
 
@@ -92,6 +94,26 @@ public class EmployeeDetailsController {
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/JobTypeDetails.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
         primaryStage.setScene(new Scene(root, 900, 400));
+
+//        Sets an icon for the application
+        Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
+        primaryStage.getIcons().add(applicationIcon);
+
+        primaryStage.show();
+
+    }
+
+    public void goToWelcomeScreen() throws Exception{
+//        Gets the current window
+        Stage currentStage = (Stage)btn_logout.getScene().getWindow();
+
+//        Closes the current window
+        currentStage.close();
+
+//        Loads the job type details window
+        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/WelcomeScreen.fxml"));
+        primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
+        primaryStage.setScene(new Scene(root, 500, 300));
 
 //        Sets an icon for the application
         Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));

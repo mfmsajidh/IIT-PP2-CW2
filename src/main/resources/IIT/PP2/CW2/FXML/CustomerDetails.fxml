@@ -74,7 +74,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="btn_logout" layoutX="825.0" layoutY="24.0" mnemonicParsing="false" text="Logout">
+      <Button fx:id="btn_logout" layoutX="825.0" layoutY="24.0" mnemonicParsing="false" onAction="#goToWelcomeScreen" text="Logout">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
