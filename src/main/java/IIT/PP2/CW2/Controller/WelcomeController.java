@@ -12,6 +12,8 @@ public class WelcomeController {
 
     @FXML
     private Button btn_login;
+    @FXML
+    private Button btn_exit;
 
     private Stage primaryStage = new Stage();
 
@@ -34,6 +36,13 @@ public class WelcomeController {
         primaryStage.show();
 
     }
+
+    public void exitWelcomeScreen() {
+        Stage currentStage = (Stage)btn_exit.getScene().getWindow();
+        currentStage.close();
+    }
+
+
 
 
 }

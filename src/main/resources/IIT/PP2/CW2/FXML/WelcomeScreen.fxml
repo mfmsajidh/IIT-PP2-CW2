@@ -4,11 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IIT.PP2.CW2.Controller.WelcomeController">
    <children>
-      <Button fx:id="btn_login" layoutX="227.0" layoutY="241.0" mnemonicParsing="false" onAction="#goToEmployeeDetails" text="Login" />
       <Label layoutX="144.0" layoutY="157.0" text="Username" />
       <Label layoutX="144.0" layoutY="199.0" text="Password" />
       <TextField layoutX="208.0" layoutY="153.0" promptText="Username" />
@@ -23,5 +23,11 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <HBox alignment="CENTER" layoutX="150.0" layoutY="235.0" prefHeight="51.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button fx:id="btn_login" mnemonicParsing="false" onAction="#goToEmployeeDetails" text="Login" />
+            <Button fx:id="btn_exit" mnemonicParsing="false" onAction="#exitWelcomeScreen" text="Exit" textAlignment="CENTER" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

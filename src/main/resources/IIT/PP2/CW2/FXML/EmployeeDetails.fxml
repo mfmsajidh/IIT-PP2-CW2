@@ -34,23 +34,28 @@
             <Button fx:id="btn_employees" disable="true" mnemonicParsing="false" text="Employees">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
           <Button fx:id="btn_contracts" mnemonicParsing="false" onAction="#goToContractDetails" prefHeight="25.0" text="Contracts">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btn_customers" mnemonicParsing="false" onAction="#goToCustomerDetails" text="Customers">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btn_jobRoles" mnemonicParsing="false" onAction="#goToJobRoleDetails" text="Job Roles">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btn_jobTypes" mnemonicParsing="false" onAction="#goToJobTypeDetails" text="Job Types">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
          <opaqueInsets>
             <Insets />
@@ -81,11 +86,35 @@
                   <TextField prefHeight="25.0" prefWidth="155.0" promptText="Contact Number" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="90.0" prefHeight="40.0" prefWidth="290.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveEmployeeDetails" text="Insert">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#updateEmployeeDetails" text="Update">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteEmployeeDetails" text="Delete">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <Label layoutX="703.0" layoutY="27.0" text="Welcome, Admin">
          <font>
             <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_status" layoutX="35.0" layoutY="376.0" prefHeight="20.0" prefWidth="531.0" textFill="RED">
+         <font>
+            <Font name="System Italic" size="12.0" />
          </font>
       </Label>
    </children>

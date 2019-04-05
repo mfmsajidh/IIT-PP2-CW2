@@ -72,6 +72,25 @@
                   <TextField prefHeight="25.0" prefWidth="155.0" promptText="Contact Number" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveCustomerDetails" text="Insert">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#updateCustomerDetails" text="Update">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteCustomerDetails" text="Delete">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <Button fx:id="btn_logout" layoutX="825.0" layoutY="24.0" mnemonicParsing="false" onAction="#goToWelcomeScreen" text="Logout">
@@ -82,6 +101,11 @@
       <Label layoutX="708.0" layoutY="27.0" text="Welcome, Admin">
          <font>
             <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_status" layoutX="37.0" layoutY="375.0" prefHeight="20.0" prefWidth="531.0" textFill="RED">
+         <font>
+            <Font name="System Italic" size="12.0" />
          </font>
       </Label>
    </children>
