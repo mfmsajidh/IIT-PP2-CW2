@@ -71,24 +71,24 @@
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
                <children>
                   <Label text="Name" />
-                  <TextField prefHeight="25.0" prefWidth="214.0" promptText="Name" />
+                  <TextField fx:id="txt_name" prefHeight="25.0" prefWidth="214.0" promptText="Name" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
                <children>
                   <Label text="Date of Birth" />
-                  <DatePicker promptText="Date of Birth" />
+                  <DatePicker fx:id="txt_dateOfBirth" promptText="Date of Birth" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
                <children>
                   <Label text="Contact Number" />
-                  <TextField prefHeight="25.0" prefWidth="155.0" promptText="Contact Number" />
+                  <TextField fx:id="txt_contactNumber" prefHeight="25.0" prefWidth="155.0" promptText="Contact Number" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="90.0" prefHeight="40.0" prefWidth="290.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#saveEmployeeDetails" text="Insert">
+                  <Button mnemonicParsing="false" onAction="#insertEmployeeDetails" text="Insert">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>

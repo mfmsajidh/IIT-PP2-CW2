@@ -23,7 +23,7 @@
          <columns>
             <TableColumn prefWidth="40.0" text="ID" />
             <TableColumn prefWidth="382.0" text="Job Role" />
-            <TableColumn prefWidth="110.0" text="Column X" />
+            <TableColumn prefWidth="110.0" text="Hourly Pay" />
          </columns>
       </TableView>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="14.0" prefHeight="45.0" prefWidth="531.0" spacing="20.0">

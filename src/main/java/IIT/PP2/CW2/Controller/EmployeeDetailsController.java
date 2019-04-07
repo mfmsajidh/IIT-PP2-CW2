@@ -9,12 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.bson.Document;
 
 public class EmployeeDetailsController {
+
+    private final static String HOST = "localhost";
+    private final static int PORT = 27017;
 
     @FXML
     private Button btn_contracts;
@@ -28,6 +33,12 @@ public class EmployeeDetailsController {
     private Button btn_logout;
     @FXML
     private Label lbl_status;
+    @FXML
+    private TextField txt_name;
+    @FXML
+    private DatePicker txt_dateOfBirth;
+    @FXML
+    private TextField txt_contactNumber;
 
     private Stage primaryStage = new Stage();
 
@@ -131,41 +142,38 @@ public class EmployeeDetailsController {
 
     }
 
-    public void saveEmployeeDetails(ActionEvent event){
+    public void insertEmployeeDetails(ActionEvent event){
         try{
-////          create a connection to mongodb server
-//            MongoClient mongoClient = new MongoClient(HOST, PORT);
-//
-////          create a database name
-//            MongoDatabase mongoDatabase = mongoClient.getDatabase("Confab");
-//
-////          create a collection
-//            MongoCollection coll = mongoDatabase.getCollection("Attendance");
-//
-////          get the values of the fields
-//            Document doc = new Document("firstname", firstname.getText())
-//                    .append("lastname", lastname.getText())
-//                    .append("email", email.getText())
-//                    .append("gender", gender.getValue())
-//                    .append("phone_number", pnumber.getText());
-//
-////          save the document
-//            coll.insertOne(doc);
-//
-////          display a success message
+
+//          Creates a connection to mongodb server
+            MongoClient mongoClient = new MongoClient(HOST, PORT);
+
+//          Creates a database name
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("BeGOOD");
+
+//          Creates a collection
+            MongoCollection employeeCollection = mongoDatabase.getCollection("Employee");
+
+//          Gets the values of the fields
+            Document doc = new Document("Name", txt_name.getText())
+                    .append("Date of Birth", txt_dateOfBirth.getValue())
+                    .append("Contact Number", txt_contactNumber.getText());
+
+//          Inserts the document
+            employeeCollection.insertOne(doc);
+
+//          Display a success message
             lbl_status.setText("Saved Successfully !!!");
-//
-////          set the fields to null or empty
-//            firstname.setText("");
-//            lastname.setText("");
-//            email.setText("");
-//            gender.setValue(null);
-//            pnumber.setText("");
+
+//          set the fields to null or empty
+            txt_name.setText("");
+            txt_dateOfBirth.setValue(null);
+            txt_contactNumber.setText("");
         }
         catch (Exception e){
             System.out.println(e.getClass().getName() + ": " + e.getMessage());
-//          display the error message
-            lbl_status.setText("Failed to save");
+//          Display the error message
+            lbl_status.setText("Insert Failed !!!");
         }
     }
 
