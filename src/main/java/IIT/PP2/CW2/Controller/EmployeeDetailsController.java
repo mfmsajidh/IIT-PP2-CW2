@@ -6,10 +6,12 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,13 +19,20 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.bson.Document;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class EmployeeDetailsController {
+public class EmployeeDetailsController implements Initializable {
 
     private final static String HOST = "localhost";
     private final static int PORT = 27017;
+
+    private String name;
+    private String dateOfBirth;
+    private String contactNumber;
+    private int temporaryId;
 
     @FXML
     private Button btn_contracts;
@@ -75,6 +84,31 @@ public class EmployeeDetailsController {
 
 //    Calls the find all method
     MongoCursor<Document> cursor = employeeCollection.find().iterator();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        tableView_employeeDetails.setEditable(true);
+
+        try {
+            for (int i=0; i<employeeCollection.count(); i++) {
+                temporaryId = i + 1;
+
+                Document employeeDoc = cursor.next();
+                name = employeeDoc.getString("Name");
+                dateOfBirth = employeeDoc.getString("Date of Birth");
+                contactNumber = employeeDoc.getString("Contact Number");
+
+                employee.add(new EmployeeDetailsDTO(temporaryId, name, dateOfBirth, contactNumber));
+            }
+            employeeList = FXCollections.observableArrayList(employee);
+        } finally {
+//            Closes the connection
+            cursor.close();
+        }
+
+//        Calls the setEmployeeTable method
+        setEmployeeTable();
+    }
 
     public void goToContractDetails() throws Exception{
 //        Gets the current window
@@ -203,4 +237,9 @@ public class EmployeeDetailsController {
     public void deleteEmployeeDetails(ActionEvent event){
         lbl_status.setText("Deleted Successfully !!!");
     }
+
+    public void setEmployeeTable(){
+
+    }
+
 }
