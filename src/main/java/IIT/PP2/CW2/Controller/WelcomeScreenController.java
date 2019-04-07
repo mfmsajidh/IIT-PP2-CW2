@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-public class WelcomeController {
+public class WelcomeScreenController {
 
     @FXML
     private Button btn_login;
@@ -25,7 +25,7 @@ public class WelcomeController {
         currentStage.close();
 
 //        Loads the employee details window
-        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Employee Details");
         primaryStage.setScene(new Scene(root, 900, 400));
 

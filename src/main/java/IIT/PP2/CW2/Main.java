@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/WelcomeScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/WelcomeScreenUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Login");
         primaryStage.setScene(new Scene(root, 500, 300));
 

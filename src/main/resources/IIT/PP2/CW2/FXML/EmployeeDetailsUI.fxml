@@ -19,14 +19,14 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="35.0" layoutY="82.0" prefHeight="237.0" prefWidth="531.0">
+      <TableView fx:id="tableView_employeeDetails" layoutX="35.0" layoutY="82.0" prefHeight="237.0" prefWidth="531.0">
         <columns>
-            <TableColumn prefWidth="40.0" text="ID" />
-          <TableColumn prefWidth="180.0" text="Name" />
-          <TableColumn prefWidth="89.0" text="Date of Birth" />
-            <TableColumn prefWidth="76.0" text="Contact No." />
-            <TableColumn prefWidth="75.0" text="Job Role" />
-            <TableColumn prefWidth="75.0" text="Salary" />
+            <TableColumn fx:id="tableCell_employeeId" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="tableCell_employeeName" prefWidth="180.0" text="Name" />
+          <TableColumn fx:id="tableCell_employeeDateOfBirth" prefWidth="89.0" text="Date of Birth" />
+            <TableColumn fx:id="tableCell_employeeContactNumber" prefWidth="76.0" text="Contact No." />
+            <TableColumn fx:id="tableCell_employeeJobRole" prefWidth="75.0" text="Job Role" />
+            <TableColumn fx:id="tableCell_employeeSalary" prefWidth="75.0" text="Salary" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutX="36.0" layoutY="14.0" prefHeight="45.0" prefWidth="531.0" spacing="20.0">
