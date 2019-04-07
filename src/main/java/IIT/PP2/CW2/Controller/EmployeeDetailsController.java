@@ -1,5 +1,6 @@
 package IIT.PP2.CW2.Controller;
 
+import IIT.PP2.CW2.Main;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -129,16 +130,10 @@ public class EmployeeDetailsController {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the job type details window
-        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/WelcomeScreen.fxml"));
-        primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
-        primaryStage.setScene(new Scene(root, 500, 300));
+//        Loads the main class window
+        Main mainClass = new Main();
 
-//        Sets an icon for the application
-        Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
-        primaryStage.getIcons().add(applicationIcon);
-
-        primaryStage.show();
+        mainClass.start(primaryStage);
 
     }
 
