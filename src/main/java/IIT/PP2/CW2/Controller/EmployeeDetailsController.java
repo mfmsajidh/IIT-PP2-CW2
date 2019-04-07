@@ -150,12 +150,12 @@ public class EmployeeDetailsController {
             MongoCollection employeeCollection = mongoDatabase.getCollection("Employee");
 
 //          Gets the values of the fields
-            Document doc = new Document("Name", txt_name.getText())
+            Document employeeDoc = new Document("Name", txt_name.getText())
                     .append("Date of Birth", txt_dateOfBirth.getValue())
                     .append("Contact Number", txt_contactNumber.getText());
 
 //          Inserts the document
-            employeeCollection.insertOne(doc);
+            employeeCollection.insertOne(employeeDoc);
 
 //          Display a success message
             lbl_status.setText("Saved Successfully !!!");
