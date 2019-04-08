@@ -21,6 +21,7 @@
       </Label>
       <TableView fx:id="tableView_employeeDetails" layoutX="35.0" layoutY="82.0" prefHeight="237.0" prefWidth="531.0">
         <columns>
+            <TableColumn fx:id="tableCell_employeeDefaultId" prefWidth="40.0" text="Default ID" />
             <TableColumn fx:id="tableCell_employeeId" prefWidth="40.0" text="ID" />
           <TableColumn fx:id="tableCell_employeeName" prefWidth="180.0" text="Name" />
           <TableColumn fx:id="tableCell_employeeDateOfBirth" prefWidth="89.0" text="Date of Birth" />
