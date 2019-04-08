@@ -20,14 +20,15 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="17.0" layoutY="100.0" prefHeight="200.0" prefWidth="566.0">
+      <TableView fx:id="tableView_contractDetails" layoutX="17.0" layoutY="100.0" prefHeight="200.0" prefWidth="566.0">
         <columns>
-          <TableColumn prefWidth="40.0" text="ID" />
-          <TableColumn prefWidth="98.0" text="Name" />
-            <TableColumn prefWidth="149.0" text="Description" />
-            <TableColumn prefWidth="94.66665649414062" text="Creation Date" />
-            <TableColumn prefWidth="89.33334350585938" text="Job Type" />
-            <TableColumn prefWidth="94.0" text="Project Leader" />
+            <TableColumn fx:id="tableCell_contractDefaultId" prefWidth="40.0" text="Default ID" visible="false" />
+          <TableColumn fx:id="tableCell_contractId" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="tableCell_contractName" prefWidth="98.0" text="Name" />
+            <TableColumn fx:id="tableCell_contractDescription" prefWidth="149.0" text="Description" />
+            <TableColumn fx:id="tableCell_contractCreationDate" prefWidth="94.66665649414062" text="Creation Date" />
+            <TableColumn fx:id="tableCell_contractJobType" prefWidth="89.33334350585938" text="Job Type" />
+            <TableColumn fx:id="tableCell_contractProjectLeader" prefWidth="94.0" text="Project Leader" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutX="45.0" layoutY="24.0" prefHeight="45.0" prefWidth="531.0" spacing="20.0">
@@ -83,9 +84,15 @@
                   <TextField fx:id="txt_jobType" prefHeight="25.0" prefWidth="201.0" promptText="Job Type" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
+               <children>
+                  <Label text="Project Leader" />
+                  <TextField fx:id="txt_projectLeader" prefHeight="25.0" prefWidth="174.0" promptText="Project Leader" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#saveContractDetails" text="Insert">
+                  <Button mnemonicParsing="false" onAction="#insertContractDetails" text="Insert">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>

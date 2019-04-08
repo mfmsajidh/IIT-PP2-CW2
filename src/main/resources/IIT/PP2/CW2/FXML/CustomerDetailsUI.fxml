@@ -2,10 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,11 +18,12 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <TableView layoutX="34.0" layoutY="100.0" prefHeight="200.0" prefWidth="533.0">
+      <TableView fx:id="tableView_customerDetails" layoutX="34.0" layoutY="100.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
-          <TableColumn prefWidth="40.0" text="ID" />
-          <TableColumn prefWidth="382.0" text="Name" />
-            <TableColumn prefWidth="110.0" text="Contact No." />
+          <TableColumn fx:id="tableCell_customerId" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="tableCell_customerName" prefWidth="160.6666717529297" text="Name" />
+            <TableColumn fx:id="tableCell_customerAddress" prefWidth="175.0" text="Address" />
+            <TableColumn prefWidth="156.0" text="Contact No." />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="14.0" prefHeight="45.0" prefWidth="531.0" spacing="20.0">
@@ -57,24 +58,29 @@
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
                <children>
                   <Label text="Name" />
-                  <TextField prefHeight="25.0" prefWidth="214.0" promptText="Name" />
+                  <TextField fx:id="txt_name" prefHeight="25.0" prefWidth="214.0" promptText="Name" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
                <children>
-                  <Label text="Date of Birth" />
-                  <DatePicker promptText="Date of Birth" />
+                  <Label text="Address" />
+                  <TextArea fx:id="txt_address" prefHeight="200.0" prefWidth="200.0" promptText="Address" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="290.0" spacing="20.0">
                <children>
                   <Label text="Contact Number" />
-                  <TextField prefHeight="25.0" prefWidth="155.0" promptText="Contact Number" />
+                  <TextField fx:id="txt_contactNumber" prefHeight="25.0" prefWidth="155.0" promptText="Contact Number" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#saveCustomerDetails" text="Insert">
+                  <Button mnemonicParsing="false" onAction="#insertCustomerDetails" text="Insert">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#viewCustomerDetails" text="View">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
