@@ -252,12 +252,7 @@ public class EmployeeDetailsController implements Initializable {
     }
 
     public void updateEmployeeDetails(ActionEvent event){
-
-        String a = txt_name.getText();
-        LocalDate b =  txt_dateOfBirth.getValue();
-        String c = txt_contactNumber.getText() ;
-
-        boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals(""));
+        boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals("") && txt_dateOfBirth.getValue() == null);
         if (notRetrieved) {
             lbl_status.setText("Please click view to update an employee");
         } else {
