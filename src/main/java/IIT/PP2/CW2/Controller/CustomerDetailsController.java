@@ -78,7 +78,7 @@ public class CustomerDetailsController implements Initializable {
 
     private Stage primaryStage = new Stage();
 
-    //    Creates an observable list to hold the Employees object in the Employees class
+    //    Creates an observable list to hold the object in the class
     public ObservableList<CustomerDetailsDAO> customerList;
 
     public List customer = new ArrayList();
@@ -148,7 +148,6 @@ public class CustomerDetailsController implements Initializable {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the customer details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/ContractDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Contract Details");
         primaryStage.setScene(new Scene(root, 900, 400));
@@ -246,7 +245,7 @@ public class CustomerDetailsController implements Initializable {
     public void viewCustomerDetails(ActionEvent event) {
         CustomerDetailsDAO selectedCustomer = tableView_customerDetails.getSelectionModel().getSelectedItem();
         if (selectedCustomer == null) {
-            lbl_status.setText("Please select a customer to view");
+            lbl_status.setText("Please select a row to view");
         } else {
             txt_name.setText(selectedCustomer.getName());
             txt_address.setText(selectedCustomer.getAddress());
@@ -257,7 +256,7 @@ public class CustomerDetailsController implements Initializable {
     public void updateCustomerDetails(ActionEvent event){
         boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals("") && txt_address.getText().equals(""));
         if (notRetrieved) {
-            lbl_status.setText("Please click view to update an customer");
+            lbl_status.setText("Please click view to before updating a row");
         } else if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_address.getText().equals("")) {
             lbl_status.setText("Missing required field inputs !!!");
         } else {
@@ -282,7 +281,7 @@ public class CustomerDetailsController implements Initializable {
         CustomerDetailsDAO selectedCustomer = tableView_customerDetails.getSelectionModel().getSelectedItem();
 
         if (selectedCustomer == null) {
-            lbl_status.setText("Please select a customer to delete");
+            lbl_status.setText("Please select a row to delete");
         } else {
             String id_ = selectedCustomer.getDefaultId();
             customerCollection.deleteOne(eq("_id", new ObjectId(id_)));
@@ -315,7 +314,7 @@ public class CustomerDetailsController implements Initializable {
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = customerCollection.find().iterator();
 
-//        Clears the customer list so that the previous data won't be displayed together with this new ones on the table
+//        Clears the list so that the previous data won't be displayed together with this new ones on the table
         customer.clear();
 
         try{

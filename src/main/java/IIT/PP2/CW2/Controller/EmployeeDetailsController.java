@@ -75,7 +75,7 @@ public class EmployeeDetailsController implements Initializable {
 
     private Stage primaryStage = new Stage();
 
-//    Creates an observable list to hold the Employees object in the Employees class
+//    Creates an observable list to hold the object in the class
     public ObservableList<EmployeeDetailsDAO> employeeList;
 
     public List employee = new ArrayList();
@@ -127,7 +127,6 @@ public class EmployeeDetailsController implements Initializable {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the customer details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/ContractDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Contract Details");
         primaryStage.setScene(new Scene(root, 900, 400));
@@ -147,7 +146,6 @@ public class EmployeeDetailsController implements Initializable {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the customer details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/CustomerDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Customer Details");
         primaryStage.setScene(new Scene(root, 900, 400));
@@ -245,7 +243,7 @@ public class EmployeeDetailsController implements Initializable {
     public void viewEmployeeDetails(ActionEvent event) {
         EmployeeDetailsDAO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
         if (selectedEmployee == null) {
-            lbl_status.setText("Please select an customer to view");
+            lbl_status.setText("Please select a row to view");
         } else {
             txt_name.setText(selectedEmployee.getName());
             txt_dateOfBirth.setValue(selectedEmployee.getDateOfBirth());
@@ -315,7 +313,7 @@ public class EmployeeDetailsController implements Initializable {
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = employeeCollection.find().iterator();
 
-//        Clears the customer list so that the previous data won't be displayed together with this new ones on the table
+//        Clears the list so that the previous data won't be displayed together with this new ones on the table
         employee.clear();
 
         try{
