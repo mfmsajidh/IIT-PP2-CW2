@@ -3,17 +3,19 @@ package IIT.PP2.CW2.DTO;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.Date;
+
 public class EmployeeDetailsDTO {
 
     private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
-    private final SimpleStringProperty dateOfBirth;
+    private Date dateOfBirth;
     private final SimpleStringProperty contactNumber;
 
-    public EmployeeDetailsDTO(Integer id, String name, String dateOfBirth, String contactNumber) {
+    public EmployeeDetailsDTO(Integer id, String name, Date dateOfBirth, String contactNumber) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
-        this.dateOfBirth = new SimpleStringProperty(dateOfBirth);
+        this.dateOfBirth = dateOfBirth;
         this.contactNumber  = new SimpleStringProperty(contactNumber);
 
     }
@@ -26,8 +28,8 @@ public class EmployeeDetailsDTO {
         return name.get();
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth.get();
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public String getContactNumber() {
@@ -38,8 +40,8 @@ public class EmployeeDetailsDTO {
         name.set(thisName);
     }
 
-    public void setDateOfBirth(String thisDateOfBirth){
-        dateOfBirth.set(thisDateOfBirth);
+    public void setDateOfBirth(Date thisDateOfBirth){
+        dateOfBirth = thisDateOfBirth;
     }
 
 

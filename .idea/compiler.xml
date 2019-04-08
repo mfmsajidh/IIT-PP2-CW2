@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="IIT-PP2-CW2" target="1.5" />
+      <module name="IIT-PP2-CW2" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

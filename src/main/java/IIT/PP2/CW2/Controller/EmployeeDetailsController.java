@@ -9,18 +9,22 @@ import com.mongodb.client.MongoDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.bson.Document;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -30,7 +34,7 @@ public class EmployeeDetailsController implements Initializable {
     private final static int PORT = 27017;
 
     private String name;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String contactNumber;
     private int temporaryId;
 
@@ -62,7 +66,7 @@ public class EmployeeDetailsController implements Initializable {
     @FXML
     private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeName;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeDateOfBirth;
+    private TableColumn<EmployeeDetailsDTO, Date> tableCell_employeeDateOfBirth;
     @FXML
     private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeContactNumber;
 
@@ -95,10 +99,11 @@ public class EmployeeDetailsController implements Initializable {
 
                 Document employeeDoc = cursor.next();
                 name = employeeDoc.getString("Name");
-                dateOfBirth = employeeDoc.getString("Date of Birth");
+                dateOfBirth = employeeDoc.getDate("Date of Birth");
                 contactNumber = employeeDoc.getString("Contact Number");
 
                 employee.add(new EmployeeDetailsDTO(temporaryId, name, dateOfBirth, contactNumber));
+//                employee.add(new EmployeeDetailsDTO(temporaryId, name, contactNumber));
             }
             employeeList = FXCollections.observableArrayList(employee);
         } finally {
@@ -239,7 +244,72 @@ public class EmployeeDetailsController implements Initializable {
     }
 
     public void setEmployeeTable(){
+////        This makes the table editable
+//        tableView_employeeDetails.setEditable(true);
+//
+////        Makes the name column editable with a textfield
+//        tableCell_employeeName.setCellFactory(TextFieldTableCell.<EmployeeDetailsDTO>forTableColumn());
+//
+////        Gets the new value and calls the setName method
+//        tableCell_employeeName.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<EmployeeDetailsDTO, String>>() {
+//            @Override
+//            public void handle(TableColumn.CellEditEvent<EmployeeDetailsDTO, String> event) {
+//                ((EmployeeDetailsDTO)event.getTableView().getItems().get(event.getTablePosition().getRow())).setName(event.getNewValue());
+//            }
+//        });
+//
+////        Makes contact number column editable with a textfield
+//        tableCell_employeeContactNumber.setCellFactory(TextFieldTableCell.<EmployeeDetailsDTO>forTableColumn());
+//
+////        Gets the new value and calls the setContactNumber method
+//        tableCell_employeeContactNumber.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<EmployeeDetailsDTO, String>>() {
+//            @Override
+//            public void handle(TableColumn.CellEditEvent<EmployeeDetailsDTO, String> event) {
+//                ((EmployeeDetailsDTO)event.getTableView().getItems().get(event.getTablePosition().getRow())).setContactNumber(event.getNewValue());
+//            }
+//        });
+
+//        Sets the values of each column to display on the table
+        tableCell_employeeId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, Integer>("id"));
+        tableCell_employeeName.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("name"));
+        tableCell_employeeDateOfBirth.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, Date>("dateOfBirth"));
+        tableCell_employeeContactNumber.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("contactNumber"));
+
+        tableView_employeeDetails.setItems(employeeList);
+
 
     }
+
+//    private void rePopulateEmployeeTable() {
+//
+////        Calls the find all methods from the mongodb database
+//        MongoCursor<Document> cursor = employeeCollection.find().iterator();
+//
+////        Clears the employee list so that the previous data won't be displayed together with this new ones on the table
+//        employee.clear();
+//
+//        try{
+////          loop through the database and then populate the list
+//            for(int i = 0; i < coll.count(); i++){
+//                temporaryId = i +1;
+//
+//                Document doc = cursor.next();
+//                name = doc.getString("Name");
+//                dateOfBirth = doc.getString("Date of Birth");
+//                contactNumber = doc.getString("Contact Number");
+//
+//                employee.add(new EmployeeDetailsDTO(temporaryId, name, dateOfBirth, contactNumber ));
+//            }
+//            employeeList = FXCollections.observableArrayList(employee);
+//
+//
+//        }
+//        finally {
+////          close the connection
+//            cursor.close();
+//        }
+//
+//
+//    }
 
 }
