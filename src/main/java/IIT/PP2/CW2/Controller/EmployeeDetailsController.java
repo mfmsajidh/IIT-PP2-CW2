@@ -219,19 +219,23 @@ public class EmployeeDetailsController implements Initializable {
     public void insertEmployeeDetails(ActionEvent event){
         try{
 
-//              Gets the values of the fields
-            Document employeeDoc = new Document("Name", txt_name.getText())
-                    .append("Date of Birth", txt_dateOfBirth.getValue())
-                    .append("Contact Number", txt_contactNumber.getText());
+            if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_dateOfBirth.getValue() == null) {
+                lbl_status.setText("Missing required field inputs !!!");
+            } else {
+//                Gets the values of the fields
+                Document employeeDoc = new Document("Name", txt_name.getText())
+                        .append("Date of Birth", txt_dateOfBirth.getValue())
+                        .append("Contact Number", txt_contactNumber.getText());
 
-//              Inserts the document
-            employeeCollection.insertOne(employeeDoc);
+//                Inserts the document
+                employeeCollection.insertOne(employeeDoc);
 
-//              Displays a success message
-            lbl_status.setText("Saved Successfully !!!");
+//                Displays a success message
+                lbl_status.setText("Saved Successfully !!!");
 
-            rePopulateEmployeeTable();
-            setEmployeeTable();
+                rePopulateEmployeeTable();
+                setEmployeeTable();
+            }
         }
         catch (Exception e){
             System.out.println(e.getClass().getName() + ": " + e.getMessage());
