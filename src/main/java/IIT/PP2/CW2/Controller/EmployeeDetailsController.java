@@ -38,7 +38,7 @@ public class EmployeeDetailsController implements Initializable {
     private String defaultId;
     private int temporaryId;
     private String name;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String contactNumber;
 
     @FXML
@@ -71,7 +71,7 @@ public class EmployeeDetailsController implements Initializable {
     @FXML
     private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeName;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, Date> tableCell_employeeDateOfBirth;
+    private TableColumn<EmployeeDetailsDTO, LocalDate> tableCell_employeeDateOfBirth;
     @FXML
     private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeContactNumber;
 
@@ -102,9 +102,12 @@ public class EmployeeDetailsController implements Initializable {
                 temporaryId = i + 1;
 
                 Document employeeDoc = cursor.next();
+                Date getDate = employeeDoc.getDate("Date of Birth");
+                LocalDate formattedDate = getDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
                 defaultId = employeeDoc.getObjectId("_id").toString();
                 name = employeeDoc.getString("Name");
-                dateOfBirth = employeeDoc.getDate("Date of Birth");
+                dateOfBirth = formattedDate;
                 contactNumber = employeeDoc.getString("Contact Number");
 
                 employee.add(new EmployeeDetailsDTO(defaultId, temporaryId, name, dateOfBirth, contactNumber));
@@ -242,11 +245,8 @@ public class EmployeeDetailsController implements Initializable {
         if (selectedEmployee == null) {
             lbl_status.setText("Please select an employee to view");
         } else {
-            Date getDate = selectedEmployee.getDateOfBirth();
-            LocalDate formattedDate = getDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
             txt_name.setText(selectedEmployee.getName());
-            txt_dateOfBirth.setValue(formattedDate);
+            txt_dateOfBirth.setValue(selectedEmployee.getDateOfBirth());
             txt_contactNumber.setText(selectedEmployee.getContactNumber());
         }
     }
@@ -294,7 +294,7 @@ public class EmployeeDetailsController implements Initializable {
         tableCell_employeeDefaultId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, ObjectId>("defaultId"));
         tableCell_employeeId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, Integer>("id"));
         tableCell_employeeName.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("name"));
-        tableCell_employeeDateOfBirth.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, Date>("dateOfBirth"));
+        tableCell_employeeDateOfBirth.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, LocalDate>("dateOfBirth"));
         tableCell_employeeContactNumber.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("contactNumber"));
 
         tableView_employeeDetails.setItems(employeeList);
@@ -320,9 +320,12 @@ public class EmployeeDetailsController implements Initializable {
                 temporaryId = i +1;
 
                 Document employeeDoc = cursor.next();
+                Date getDate = employeeDoc.getDate("Date of Birth");
+                LocalDate formattedDate = getDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
                 defaultId = employeeDoc.getObjectId("_id").toString();
                 name = employeeDoc.getString("Name");
-                dateOfBirth = employeeDoc.getDate("Date of Birth");
+                dateOfBirth = formattedDate;
                 contactNumber = employeeDoc.getString("Contact Number");
 
                 employee.add(new EmployeeDetailsDTO(defaultId, temporaryId, name, dateOfBirth, contactNumber ));

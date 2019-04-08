@@ -3,6 +3,7 @@ package IIT.PP2.CW2.DTO;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class EmployeeDetailsDTO {
@@ -10,10 +11,10 @@ public class EmployeeDetailsDTO {
     private final SimpleStringProperty defaultId;
     private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private final SimpleStringProperty contactNumber;
 
-    public EmployeeDetailsDTO(String defaultId, Integer id, String name, Date dateOfBirth, String contactNumber) {
+    public EmployeeDetailsDTO(String defaultId, Integer id, String name, LocalDate dateOfBirth, String contactNumber) {
         this.defaultId = new SimpleStringProperty(defaultId);
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
@@ -38,11 +39,11 @@ public class EmployeeDetailsDTO {
         name.set(thisName);
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date thisDateOfBirth){
+    public void setDateOfBirth(LocalDate thisDateOfBirth){
         dateOfBirth = thisDateOfBirth;
     }
 
