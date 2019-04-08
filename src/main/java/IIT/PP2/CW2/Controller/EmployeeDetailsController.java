@@ -1,6 +1,6 @@
 package IIT.PP2.CW2.Controller;
 
-import IIT.PP2.CW2.DTO.EmployeeDetailsDTO;
+import IIT.PP2.CW2.DAO.EmployeeDetailsDAO;
 import IIT.PP2.CW2.Main;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -22,8 +22,6 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -63,22 +61,22 @@ public class EmployeeDetailsController implements Initializable {
     private TextField txt_contactNumber;
 
     @FXML
-    private TableView<EmployeeDetailsDTO> tableView_employeeDetails;
+    private TableView<EmployeeDetailsDAO> tableView_employeeDetails;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, ObjectId> tableCell_employeeDefaultId;
+    private TableColumn<EmployeeDetailsDAO, ObjectId> tableCell_employeeDefaultId;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, Integer> tableCell_employeeId;
+    private TableColumn<EmployeeDetailsDAO, Integer> tableCell_employeeId;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeName;
+    private TableColumn<EmployeeDetailsDAO, String> tableCell_employeeName;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, LocalDate> tableCell_employeeDateOfBirth;
+    private TableColumn<EmployeeDetailsDAO, LocalDate> tableCell_employeeDateOfBirth;
     @FXML
-    private TableColumn<EmployeeDetailsDTO, String> tableCell_employeeContactNumber;
+    private TableColumn<EmployeeDetailsDAO, String> tableCell_employeeContactNumber;
 
     private Stage primaryStage = new Stage();
 
 //    Creates an observable list to hold the Employees object in the Employees class
-    public ObservableList<EmployeeDetailsDTO> employeeList;
+    public ObservableList<EmployeeDetailsDAO> employeeList;
 
     public List employee = new ArrayList();
 
@@ -110,7 +108,7 @@ public class EmployeeDetailsController implements Initializable {
                 dateOfBirth = formattedDate;
                 contactNumber = employeeDoc.getString("Contact Number");
 
-                employee.add(new EmployeeDetailsDTO(defaultId, temporaryId, name, dateOfBirth, contactNumber));
+                employee.add(new EmployeeDetailsDAO(defaultId, temporaryId, name, dateOfBirth, contactNumber));
             }
             employeeList = FXCollections.observableArrayList(employee);
         } finally {
@@ -245,7 +243,7 @@ public class EmployeeDetailsController implements Initializable {
     }
 
     public void viewEmployeeDetails(ActionEvent event) {
-        EmployeeDetailsDTO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
+        EmployeeDetailsDAO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
         if (selectedEmployee == null) {
             lbl_status.setText("Please select an employee to view");
         } else {
@@ -259,8 +257,10 @@ public class EmployeeDetailsController implements Initializable {
         boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals("") && txt_dateOfBirth.getValue() == null);
         if (notRetrieved) {
             lbl_status.setText("Please click view to update an employee");
+        } else if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_dateOfBirth.getValue() == null) {
+            lbl_status.setText("Missing required field inputs !!!");
         } else {
-            EmployeeDetailsDTO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
+            EmployeeDetailsDAO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
 
             String id_ = selectedEmployee.getDefaultId();
 
@@ -278,7 +278,7 @@ public class EmployeeDetailsController implements Initializable {
     }
 
     public void deleteEmployeeDetails(ActionEvent event){
-        EmployeeDetailsDTO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
+        EmployeeDetailsDAO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
 
         if (selectedEmployee == null) {
             lbl_status.setText("Please select an employee to delete");
@@ -295,11 +295,11 @@ public class EmployeeDetailsController implements Initializable {
     public void setEmployeeTable(){
 
 //        Sets the values of each column to display on the table
-        tableCell_employeeDefaultId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, ObjectId>("defaultId"));
-        tableCell_employeeId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, Integer>("id"));
-        tableCell_employeeName.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("name"));
-        tableCell_employeeDateOfBirth.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, LocalDate>("dateOfBirth"));
-        tableCell_employeeContactNumber.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("contactNumber"));
+        tableCell_employeeDefaultId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, ObjectId>("defaultId"));
+        tableCell_employeeId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, Integer>("id"));
+        tableCell_employeeName.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, String>("name"));
+        tableCell_employeeDateOfBirth.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, LocalDate>("dateOfBirth"));
+        tableCell_employeeContactNumber.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, String>("contactNumber"));
 
         tableView_employeeDetails.setItems(employeeList);
 
@@ -332,7 +332,7 @@ public class EmployeeDetailsController implements Initializable {
                 dateOfBirth = formattedDate;
                 contactNumber = employeeDoc.getString("Contact Number");
 
-                employee.add(new EmployeeDetailsDTO(defaultId, temporaryId, name, dateOfBirth, contactNumber ));
+                employee.add(new EmployeeDetailsDAO(defaultId, temporaryId, name, dateOfBirth, contactNumber ));
             }
             employeeList = FXCollections.observableArrayList(employee);
 

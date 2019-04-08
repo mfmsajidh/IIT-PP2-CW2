@@ -1,11 +1,11 @@
-package IIT.PP2.CW2.DTO;
+package IIT.PP2.CW2.DAO;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
 
-public class EmployeeDetailsDTO {
+public class EmployeeDetailsDAO {
 
     private final SimpleStringProperty defaultId;
     private final SimpleIntegerProperty id;
@@ -13,7 +13,7 @@ public class EmployeeDetailsDTO {
     private LocalDate dateOfBirth;
     private final SimpleStringProperty contactNumber;
 
-    public EmployeeDetailsDTO(String defaultId, Integer id, String name, LocalDate dateOfBirth, String contactNumber) {
+    public EmployeeDetailsDAO(String defaultId, Integer id, String name, LocalDate dateOfBirth, String contactNumber) {
         this.defaultId = new SimpleStringProperty(defaultId);
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
