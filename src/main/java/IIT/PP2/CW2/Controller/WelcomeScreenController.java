@@ -24,7 +24,7 @@ public class WelcomeScreenController {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the customer details window
+//        Loads the jobRole details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/EmployeeDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Employee Details");
         primaryStage.setScene(new Scene(root, 900, 400));

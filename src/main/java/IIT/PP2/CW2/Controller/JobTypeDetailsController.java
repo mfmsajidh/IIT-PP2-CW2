@@ -55,7 +55,7 @@ public class JobTypeDetailsController {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the customer details window
+//        Loads the jobRole details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/ContractDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Contract Details");
         primaryStage.setScene(new Scene(root, 900, 400));
@@ -75,7 +75,7 @@ public class JobTypeDetailsController {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the customer details window
+//        Loads the jobRole details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/CustomerDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Customer Details");
         primaryStage.setScene(new Scene(root, 900, 400));
