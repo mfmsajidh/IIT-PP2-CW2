@@ -91,7 +91,6 @@ public class EmployeeDetailsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tableView_employeeDetails.setEditable(true);
 
         try {
             for (int i=0; i<employeeCollection.count(); i++) {
@@ -103,7 +102,6 @@ public class EmployeeDetailsController implements Initializable {
                 contactNumber = employeeDoc.getString("Contact Number");
 
                 employee.add(new EmployeeDetailsDTO(temporaryId, name, dateOfBirth, contactNumber));
-//                employee.add(new EmployeeDetailsDTO(temporaryId, name, contactNumber));
             }
             employeeList = FXCollections.observableArrayList(employee);
         } finally {
@@ -276,7 +274,6 @@ public class EmployeeDetailsController implements Initializable {
         tableCell_employeeContactNumber.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, String>("contactNumber"));
 
         tableView_employeeDetails.setItems(employeeList);
-
 
     }
 
