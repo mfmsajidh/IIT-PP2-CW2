@@ -22,10 +22,11 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -90,11 +91,11 @@ public class EmployeeDetailsController implements Initializable {
 //    Creates a collection
     MongoCollection employeeCollection = mongoDatabase.getCollection("Employee");
 
-//    Calls the find all method
-    MongoCursor<Document> cursor = employeeCollection.find().iterator();
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //    Calls the find all method
+        MongoCursor<Document> cursor = employeeCollection.find().iterator();
 
         try {
             for (int i=0; i<employeeCollection.count(); i++) {
@@ -223,15 +224,8 @@ public class EmployeeDetailsController implements Initializable {
 //              Inserts the document
             employeeCollection.insertOne(employeeDoc);
 
-
-
 //              Displays a success message
             lbl_status.setText("Saved Successfully !!!");
-
-//              Sets the fields to null or empty
-            txt_name.setText("");
-            txt_dateOfBirth.setValue(null);
-            txt_contactNumber.setText("");
 
             rePopulateEmployeeTable();
             setEmployeeTable();
@@ -243,8 +237,45 @@ public class EmployeeDetailsController implements Initializable {
         }
     }
 
+    public void viewEmployeeDetails(ActionEvent event) {
+        EmployeeDetailsDTO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
+        if (selectedEmployee == null) {
+            lbl_status.setText("Please select an employee to view");
+        } else {
+            Date getDate = selectedEmployee.getDateOfBirth();
+            LocalDate formattedDate = getDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            txt_name.setText(selectedEmployee.getName());
+            txt_dateOfBirth.setValue(formattedDate);
+            txt_contactNumber.setText(selectedEmployee.getContactNumber());
+        }
+    }
+
     public void updateEmployeeDetails(ActionEvent event){
-        lbl_status.setText("Updated Successfully !!!");
+
+        String a = txt_name.getText();
+        LocalDate b =  txt_dateOfBirth.getValue();
+        String c = txt_contactNumber.getText() ;
+
+        boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals(""));
+        if (notRetrieved) {
+            lbl_status.setText("Please click view to update an employee");
+        } else {
+            EmployeeDetailsDTO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
+
+            String id_ = selectedEmployee.getDefaultId();
+
+            employeeCollection.updateOne(eq("_id", new ObjectId(id_)), new Document("$set",
+                    new Document("Name", txt_name.getText())
+                            .append("Date of Birth", txt_dateOfBirth.getValue())
+                            .append("Contact Number", txt_contactNumber.getText())
+            ));
+
+            rePopulateEmployeeTable();;
+            setEmployeeTable();
+            lbl_status.setText("Updated Successfully !!!");
+
+        }
     }
 
     public void deleteEmployeeDetails(ActionEvent event){
@@ -263,30 +294,6 @@ public class EmployeeDetailsController implements Initializable {
     }
 
     public void setEmployeeTable(){
-////        This makes the table editable
-//        tableView_employeeDetails.setEditable(true);
-//
-////        Makes the name column editable with a textfield
-//        tableCell_employeeName.setCellFactory(TextFieldTableCell.<EmployeeDetailsDTO>forTableColumn());
-//
-////        Gets the new value and calls the setName method
-//        tableCell_employeeName.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<EmployeeDetailsDTO, String>>() {
-//            @Override
-//            public void handle(TableColumn.CellEditEvent<EmployeeDetailsDTO, String> event) {
-//                ((EmployeeDetailsDTO)event.getTableView().getItems().get(event.getTablePosition().getRow())).setName(event.getNewValue());
-//            }
-//        });
-//
-////        Makes contact number column editable with a textfield
-//        tableCell_employeeContactNumber.setCellFactory(TextFieldTableCell.<EmployeeDetailsDTO>forTableColumn());
-//
-////        Gets the new value and calls the setContactNumber method
-//        tableCell_employeeContactNumber.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<EmployeeDetailsDTO, String>>() {
-//            @Override
-//            public void handle(TableColumn.CellEditEvent<EmployeeDetailsDTO, String> event) {
-//                ((EmployeeDetailsDTO)event.getTableView().getItems().get(event.getTablePosition().getRow())).setContactNumber(event.getNewValue());
-//            }
-//        });
 
 //        Sets the values of each column to display on the table
         tableCell_employeeDefaultId.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDTO, ObjectId>("defaultId"));
@@ -300,6 +307,11 @@ public class EmployeeDetailsController implements Initializable {
     }
 
     private void rePopulateEmployeeTable() {
+
+//        Sets the fields to null or empty
+        txt_name.setText("");
+        txt_dateOfBirth.setValue(null);
+        txt_contactNumber.setText("");
 
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = employeeCollection.find().iterator();

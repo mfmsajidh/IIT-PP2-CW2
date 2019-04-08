@@ -2,20 +2,19 @@ package IIT.PP2.CW2.DTO;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.bson.types.ObjectId;
 
 import java.util.Date;
 
 public class EmployeeDetailsDTO {
 
-    private final String defaultId;
+    private final SimpleStringProperty defaultId;
     private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
     private Date dateOfBirth;
     private final SimpleStringProperty contactNumber;
 
     public EmployeeDetailsDTO(String defaultId, Integer id, String name, Date dateOfBirth, String contactNumber) {
-        this.defaultId = defaultId;
+        this.defaultId = new SimpleStringProperty(defaultId);
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.dateOfBirth = dateOfBirth;
@@ -24,7 +23,7 @@ public class EmployeeDetailsDTO {
     }
 
     public String getDefaultId() {
-        return defaultId;
+        return defaultId.get();
     }
 
     public Integer getId() {

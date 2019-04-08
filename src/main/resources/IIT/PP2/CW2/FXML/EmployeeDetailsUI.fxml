@@ -94,6 +94,11 @@
                         <Font name="System Italic" size="12.0" />
                      </font>
                   </Button>
+                  <Button layoutX="71.0" layoutY="18.0" mnemonicParsing="false" onAction="#viewEmployeeDetails" text="View">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#updateEmployeeDetails" text="Update">
                      <font>
                         <Font name="System Italic" size="12.0" />
