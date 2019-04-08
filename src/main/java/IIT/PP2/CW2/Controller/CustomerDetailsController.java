@@ -117,7 +117,6 @@ public class CustomerDetailsController implements Initializable {
             cursor.close();
         }
 
-//        Calls the setJobRoleTable method
         setCustomerTable();
     }
 

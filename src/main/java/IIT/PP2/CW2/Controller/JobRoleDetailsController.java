@@ -109,7 +109,6 @@ public class JobRoleDetailsController implements Initializable {
             cursor.close();
         }
 
-//        Calls the setJobRoleTable method
         setJobRoleTable();
     }
 
