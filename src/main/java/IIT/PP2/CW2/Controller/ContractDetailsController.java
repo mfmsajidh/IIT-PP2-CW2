@@ -126,7 +126,7 @@ public class ContractDetailsController implements Initializable {
             cursor.close();
         }
 
-//        Calls the setContractTable method
+//        Calls the setCustomerTable method
         setContractTable();
     }
 
@@ -255,7 +255,7 @@ public class ContractDetailsController implements Initializable {
     public void viewContractDetails(ActionEvent event) {
         ContractDetailsDAO selectedContract = tableView_contractDetails.getSelectionModel().getSelectedItem();
         if (selectedContract == null) {
-            lbl_status.setText("Please select a contract to view");
+            lbl_status.setText("Please select a customer to view");
         } else {
             txt_name.setText(selectedContract.getName());
             txt_description.setText(selectedContract.getDescription());
@@ -267,7 +267,7 @@ public class ContractDetailsController implements Initializable {
     public void updateContractDetails(ActionEvent event){
         boolean notRetrieved = (txt_name.getText().equals("") && txt_jobType.getText().equals("") && txt_creationDate.getValue() == null && txt_description.getText().equals(""));
         if (notRetrieved) {
-            lbl_status.setText("Please click view to update an contract");
+            lbl_status.setText("Please click view to update an customer");
         } else if (txt_name.getText().equals("") || txt_jobType.getText().equals("") || txt_creationDate.getValue() == null || txt_description.getText().equals("")) {
             lbl_status.setText("Missing required field inputs !!!");
         } else {
@@ -293,7 +293,7 @@ public class ContractDetailsController implements Initializable {
         ContractDetailsDAO selectedContract = tableView_contractDetails.getSelectionModel().getSelectedItem();
 
         if (selectedContract == null) {
-            lbl_status.setText("Please select a contract to delete");
+            lbl_status.setText("Please select a customer to delete");
         } else {
             String id_ = selectedContract.getDefaultId();
             contractCollection.deleteOne(eq("_id", new ObjectId(id_)));
@@ -328,7 +328,7 @@ public class ContractDetailsController implements Initializable {
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = contractCollection.find().iterator();
 
-//        Clears the contract list so that the previous data won't be displayed together with this new ones on the table
+//        Clears the customer list so that the previous data won't be displayed together with this new ones on the table
         contract.clear();
 
         try{

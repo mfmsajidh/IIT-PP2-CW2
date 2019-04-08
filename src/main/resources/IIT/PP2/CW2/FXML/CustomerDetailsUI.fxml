@@ -20,10 +20,11 @@
          </font></Label>
       <TableView fx:id="tableView_customerDetails" layoutX="34.0" layoutY="100.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
+            <TableColumn fx:id="tableCell_customerDefaultId" prefWidth="40.0" text="Default ID" visible="false" />
           <TableColumn fx:id="tableCell_customerId" prefWidth="40.0" text="ID" />
           <TableColumn fx:id="tableCell_customerName" prefWidth="160.6666717529297" text="Name" />
-            <TableColumn fx:id="tableCell_customerAddress" prefWidth="175.0" text="Address" />
-            <TableColumn prefWidth="156.0" text="Contact No." />
+            <TableColumn fx:id="tableCell_customerAddress" prefWidth="216.33334350585938" text="Address" />
+            <TableColumn fx:id="tableCell_customerContactNumber" prefWidth="114.66665649414062" text="Contact No." />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="14.0" prefHeight="45.0" prefWidth="531.0" spacing="20.0">

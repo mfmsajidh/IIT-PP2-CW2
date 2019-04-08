@@ -116,7 +116,7 @@ public class EmployeeDetailsController implements Initializable {
             cursor.close();
         }
 
-//        Calls the setContractTable method
+//        Calls the setCustomerTable method
         setEmployeeTable();
     }
 
@@ -127,7 +127,7 @@ public class EmployeeDetailsController implements Initializable {
 //        Closes the current window
         currentStage.close();
 
-//        Loads the contract details window
+//        Loads the customer details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/ContractDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Contract Details");
         primaryStage.setScene(new Scene(root, 900, 400));
@@ -245,7 +245,7 @@ public class EmployeeDetailsController implements Initializable {
     public void viewEmployeeDetails(ActionEvent event) {
         EmployeeDetailsDAO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
         if (selectedEmployee == null) {
-            lbl_status.setText("Please select an contract to view");
+            lbl_status.setText("Please select an customer to view");
         } else {
             txt_name.setText(selectedEmployee.getName());
             txt_dateOfBirth.setValue(selectedEmployee.getDateOfBirth());
@@ -315,7 +315,7 @@ public class EmployeeDetailsController implements Initializable {
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = employeeCollection.find().iterator();
 
-//        Clears the contract list so that the previous data won't be displayed together with this new ones on the table
+//        Clears the customer list so that the previous data won't be displayed together with this new ones on the table
         employee.clear();
 
         try{
