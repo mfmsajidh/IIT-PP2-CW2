@@ -45,10 +45,6 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btn_jobTypes" mnemonicParsing="false" onAction="#goToJobTypeDetails" text="Job Types">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
          </children>
          <opaqueInsets>
             <Insets />

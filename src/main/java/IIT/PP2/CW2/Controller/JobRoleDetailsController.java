@@ -46,8 +46,6 @@ public class JobRoleDetailsController implements Initializable {
     @FXML
     private Button btn_customers;
     @FXML
-    private Button btn_jobTypes;
-    @FXML
     private Button btn_logout;
 
     @FXML
@@ -162,26 +160,6 @@ public class JobRoleDetailsController implements Initializable {
 //        Loads the jobRole details window
         Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/CustomerDetailsUI.fxml"));
         primaryStage.setTitle("BeGOOD Inc. - Customer Details");
-        primaryStage.setScene(new Scene(root, 900, 400));
-
-//        Sets an icon for the application
-        Image applicationIcon = new Image(getClass().getResourceAsStream("/IIT/PP2/CW2/Images/Logo.png"));
-        primaryStage.getIcons().add(applicationIcon);
-
-        primaryStage.show();
-
-    }
-
-    public void goToJobTypeDetails() throws Exception{
-//        Gets the current window
-        Stage currentStage = (Stage)btn_jobTypes.getScene().getWindow();
-
-//        Closes the current window
-        currentStage.close();
-
-//        Loads the job type details window
-        Parent root = FXMLLoader.load(getClass().getResource("/IIT/PP2/CW2/FXML/JobTypeDetailsUI.fxml"));
-        primaryStage.setTitle("BeGOOD Inc. - Job Type Details");
         primaryStage.setScene(new Scene(root, 900, 400));
 
 //        Sets an icon for the application
