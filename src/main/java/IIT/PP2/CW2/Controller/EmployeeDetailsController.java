@@ -38,6 +38,8 @@ public class EmployeeDetailsController implements Initializable {
     private String name;
     private LocalDate dateOfBirth;
     private String contactNumber;
+    private String jobRole;
+    private String salary;
 
     @FXML
     private Button btn_contracts;
@@ -57,6 +59,10 @@ public class EmployeeDetailsController implements Initializable {
     private DatePicker txt_dateOfBirth;
     @FXML
     private TextField txt_contactNumber;
+    @FXML
+    private TextField txt_jobRole;
+    @FXML
+    private TextField txt_salary;
 
     @FXML
     private TableView<EmployeeDetailsDAO> tableView_employeeDetails;
@@ -70,6 +76,10 @@ public class EmployeeDetailsController implements Initializable {
     private TableColumn<EmployeeDetailsDAO, LocalDate> tableCell_employeeDateOfBirth;
     @FXML
     private TableColumn<EmployeeDetailsDAO, String> tableCell_employeeContactNumber;
+    @FXML
+    private TableColumn<EmployeeDetailsDAO, String> tableCell_employeeJobRole;
+    @FXML
+    private TableColumn<EmployeeDetailsDAO, String> tableCell_employeeSalary;
 
     private Stage primaryStage = new Stage();
 

@@ -43,6 +43,8 @@ public class ContractDetailsController implements Initializable {
     private String description;
     private LocalDate creationDate;
     private String jobType;
+    private String projectLeader;
+    private String customer;
 
     @FXML
     private Button btn_employees;
@@ -64,6 +66,10 @@ public class ContractDetailsController implements Initializable {
     private DatePicker txt_creationDate;
     @FXML
     private TextField txt_jobType;
+    @FXML
+    private TextField txt_projectLeader;
+    @FXML
+    private TextField txt_customer;
 
     @FXML
     private TableView<ContractDetailsDAO> tableView_contractDetails;
@@ -79,6 +85,10 @@ public class ContractDetailsController implements Initializable {
     private TableColumn<ContractDetailsDAO, LocalDate> tableCell_contractCreationDate;
     @FXML
     private TableColumn<ContractDetailsDAO, String> tableCell_contractJobType;
+    @FXML
+    private TableColumn<ContractDetailsDAO, String> tableCell_contractProjectLeader;
+    @FXML
+    private TableColumn<ContractDetailsDAO, String> tableCell_contractCustomer;
 
     private Stage primaryStage = new Stage();
 
