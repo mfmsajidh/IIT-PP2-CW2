@@ -125,8 +125,10 @@ public class ContractDetailsController implements Initializable {
                 description = contractDoc.getString("Description");
                 creationDate = formattedDate;
                 jobType = contractDoc.getString("Job Type");
+                projectLeader = contractDoc.getString("Project Leader");
+                customer = contractDoc.getString("Customer");
 
-                contract.add(new ContractDetailsDAO(defaultId, temporaryId, name, description, creationDate, jobType));
+                contract.add(new ContractDetailsDAO(defaultId, temporaryId, name, description, creationDate, jobType, projectLeader, customer));
             }
             contractList = FXCollections.observableArrayList(contract);
         } finally {
@@ -212,14 +214,16 @@ public class ContractDetailsController implements Initializable {
     public void insertContractDetails(ActionEvent event){
         try{
 
-            if (txt_name.getText().equals("") || txt_jobType.getText().equals("") || txt_creationDate.getValue() == null || txt_description.getText().equals("")) {
+            if (txt_name.getText().equals("") || txt_jobType.getText().equals("") || txt_creationDate.getValue() == null || txt_description.getText().equals("") || txt_projectLeader.getText().equals("") || txt_customer.getText().equals("")) {
                 lbl_status.setText("Missing required field inputs !!!");
             } else {
 //                Gets the values of the fields
                 Document contractDoc = new Document("Name", txt_name.getText())
                         .append("Description", txt_description.getText())
                         .append("Creation Date", txt_creationDate.getValue())
-                        .append("Job Type", txt_jobType.getText());
+                        .append("Job Type", txt_jobType.getText())
+                        .append("Project Leader", txt_projectLeader.getText())
+                        .append("Customer", txt_customer.getText());
 
 //                Inserts the document
                 contractCollection.insertOne(contractDoc);
@@ -247,14 +251,16 @@ public class ContractDetailsController implements Initializable {
             txt_description.setText(selectedContract.getDescription());
             txt_creationDate.setValue(selectedContract.getCreationDate());
             txt_jobType.setText(selectedContract.getJobType());
+            txt_projectLeader.setText(selectedContract.getProjectLeader());
+            txt_customer.setText(selectedContract.getCustomer());
         }
     }
 
     public void updateContractDetails(ActionEvent event){
-        boolean notRetrieved = (txt_name.getText().equals("") && txt_jobType.getText().equals("") && txt_creationDate.getValue() == null && txt_description.getText().equals(""));
+        boolean notRetrieved = (txt_name.getText().equals("") && txt_jobType.getText().equals("") && txt_creationDate.getValue() == null && txt_description.getText().equals("")&& txt_projectLeader.getText().equals("") && txt_customer.getText().equals(""));
         if (notRetrieved) {
             lbl_status.setText("Please click view before updating a row");
-        } else if (txt_name.getText().equals("") || txt_jobType.getText().equals("") || txt_creationDate.getValue() == null || txt_description.getText().equals("")) {
+        } else if (txt_name.getText().equals("") || txt_jobType.getText().equals("") || txt_creationDate.getValue() == null || txt_description.getText().equals("") || txt_projectLeader.getText().equals("") || txt_customer.getText().equals("")) {
             lbl_status.setText("Missing required field inputs !!!");
         } else {
             ContractDetailsDAO selectedContract = tableView_contractDetails.getSelectionModel().getSelectedItem();
@@ -266,6 +272,8 @@ public class ContractDetailsController implements Initializable {
                             .append("Description", txt_description.getText())
                             .append("Creation Date", txt_creationDate.getValue())
                             .append("Job Type", txt_jobType.getText())
+                            .append("Project Leader", txt_projectLeader.getText())
+                            .append("Customer", txt_customer.getText())
             ));
 
             rePopulateContractTable();;
@@ -298,6 +306,8 @@ public class ContractDetailsController implements Initializable {
         tableCell_contractDescription.setCellValueFactory(new PropertyValueFactory<ContractDetailsDAO, String>("description"));
         tableCell_contractCreationDate.setCellValueFactory(new PropertyValueFactory<ContractDetailsDAO, LocalDate>("creationDate"));
         tableCell_contractJobType.setCellValueFactory(new PropertyValueFactory<ContractDetailsDAO, String>("jobType"));
+        tableCell_contractProjectLeader.setCellValueFactory(new PropertyValueFactory<ContractDetailsDAO, String>("projectLeader"));
+        tableCell_contractCustomer.setCellValueFactory(new PropertyValueFactory<ContractDetailsDAO, String>("customer"));
 
         tableView_contractDetails.setItems(contractList);
 
@@ -310,6 +320,8 @@ public class ContractDetailsController implements Initializable {
         txt_description.setText("");
         txt_creationDate.setValue(null);
         txt_jobType.setText("");
+        txt_projectLeader.setText("");
+        txt_customer.setText("");
 
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = contractCollection.find().iterator();
@@ -331,8 +343,10 @@ public class ContractDetailsController implements Initializable {
                 description = contractDoc.getString("Description");
                 creationDate = formattedDate;
                 jobType = contractDoc.getString("Job Type");
+                projectLeader = contractDoc.getString("Project Leader");
+                customer = contractDoc.getString("Customer");
 
-                contract.add(new ContractDetailsDAO(defaultId, temporaryId, name, description, creationDate, jobType));
+                contract.add(new ContractDetailsDAO(defaultId, temporaryId, name, description, creationDate, jobType, projectLeader, customer));
             }
             contractList = FXCollections.observableArrayList(contract);
 
@@ -342,9 +356,6 @@ public class ContractDetailsController implements Initializable {
 //          close the connection
             cursor.close();
         }
-
-
     }
-
 
 }
