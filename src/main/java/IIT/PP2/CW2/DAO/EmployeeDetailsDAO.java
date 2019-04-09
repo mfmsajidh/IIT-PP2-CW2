@@ -12,14 +12,17 @@ public class EmployeeDetailsDAO {
     private final SimpleStringProperty name;
     private LocalDate dateOfBirth;
     private final SimpleStringProperty contactNumber;
+    private final SimpleStringProperty jobRole;
+    private final SimpleStringProperty salary;
 
-    public EmployeeDetailsDAO(String defaultId, Integer id, String name, LocalDate dateOfBirth, String contactNumber) {
+    public EmployeeDetailsDAO(String defaultId, Integer id, String name, LocalDate dateOfBirth, String contactNumber, String jobRole, String salary) {
         this.defaultId = new SimpleStringProperty(defaultId);
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.dateOfBirth = dateOfBirth;
         this.contactNumber  = new SimpleStringProperty(contactNumber);
-
+        this.jobRole  = new SimpleStringProperty(jobRole);
+        this.salary  = new SimpleStringProperty(salary);
     }
 
     public String getDefaultId() {
@@ -52,6 +55,22 @@ public class EmployeeDetailsDAO {
 
     public void setContactNumber(String thisContactNumber){
         contactNumber.set(thisContactNumber);
+    }
+
+    public String getJobRole() {
+        return  jobRole.get();
+    }
+
+    public void setJobRole(String thisJobRole){
+        jobRole.set(thisJobRole);
+    }
+
+    public String getSalary() {
+        return  salary.get();
+    }
+
+    public void setSalary(String thisSalary){
+        salary.set(thisSalary);
     }
 
 

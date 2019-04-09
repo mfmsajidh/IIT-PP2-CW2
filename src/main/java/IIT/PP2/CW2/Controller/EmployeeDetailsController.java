@@ -115,8 +115,10 @@ public class EmployeeDetailsController implements Initializable {
                 name = employeeDoc.getString("Name");
                 dateOfBirth = formattedDate;
                 contactNumber = employeeDoc.getString("Contact Number");
+                jobRole = employeeDoc.getString("Job Role");
+                salary = employeeDoc.getString("Salary");
 
-                employee.add(new EmployeeDetailsDAO(defaultId, temporaryId, name, dateOfBirth, contactNumber));
+                employee.add(new EmployeeDetailsDAO(defaultId, temporaryId, name, dateOfBirth, contactNumber, jobRole, salary));
             }
             employeeList = FXCollections.observableArrayList(employee);
         } finally {
@@ -202,13 +204,15 @@ public class EmployeeDetailsController implements Initializable {
     public void insertEmployeeDetails(ActionEvent event){
         try{
 
-            if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_dateOfBirth.getValue() == null) {
+            if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_dateOfBirth.getValue() == null || txt_jobRole.getText().equals("") || txt_salary.getText().equals("")) {
                 lbl_status.setText("Missing required field inputs !!!");
             } else {
 //                Gets the values of the fields
                 Document employeeDoc = new Document("Name", txt_name.getText())
                         .append("Date of Birth", txt_dateOfBirth.getValue())
-                        .append("Contact Number", txt_contactNumber.getText());
+                        .append("Contact Number", txt_contactNumber.getText())
+                        .append("Job Role", txt_jobRole.getText())
+                        .append("Salary", txt_salary.getText());
 
 //                Inserts the document
                 employeeCollection.insertOne(employeeDoc);
@@ -235,14 +239,16 @@ public class EmployeeDetailsController implements Initializable {
             txt_name.setText(selectedEmployee.getName());
             txt_dateOfBirth.setValue(selectedEmployee.getDateOfBirth());
             txt_contactNumber.setText(selectedEmployee.getContactNumber());
+            txt_jobRole.setText(selectedEmployee.getJobRole());
+            txt_salary.setText(selectedEmployee.getSalary());
         }
     }
 
     public void updateEmployeeDetails(ActionEvent event){
-        boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals("") && txt_dateOfBirth.getValue() == null);
+        boolean notRetrieved = (txt_name.getText().equals("") && txt_contactNumber.getText().equals("") && txt_dateOfBirth.getValue() == null && txt_jobRole.getText().equals("") && txt_salary.getText().equals(""));
         if (notRetrieved) {
             lbl_status.setText("Please click view to update an employee");
-        } else if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_dateOfBirth.getValue() == null) {
+        } else if (txt_name.getText().equals("") || txt_contactNumber.getText().equals("") || txt_dateOfBirth.getValue() == null || txt_jobRole.getText().equals("") || txt_salary.getText().equals("")) {
             lbl_status.setText("Missing required field inputs !!!");
         } else {
             EmployeeDetailsDAO selectedEmployee = tableView_employeeDetails.getSelectionModel().getSelectedItem();
@@ -253,6 +259,8 @@ public class EmployeeDetailsController implements Initializable {
                     new Document("Name", txt_name.getText())
                             .append("Date of Birth", txt_dateOfBirth.getValue())
                             .append("Contact Number", txt_contactNumber.getText())
+                            .append("Job Role", txt_jobRole.getText())
+                            .append("Salary", txt_salary.getText())
             ));
 
             rePopulateEmployeeTable();;
@@ -285,6 +293,8 @@ public class EmployeeDetailsController implements Initializable {
         tableCell_employeeName.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, String>("name"));
         tableCell_employeeDateOfBirth.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, LocalDate>("dateOfBirth"));
         tableCell_employeeContactNumber.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, String>("contactNumber"));
+        tableCell_employeeJobRole.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, String>("jobRole"));
+        tableCell_employeeSalary.setCellValueFactory(new PropertyValueFactory<EmployeeDetailsDAO, String>("salary"));
 
         tableView_employeeDetails.setItems(employeeList);
 
@@ -296,6 +306,8 @@ public class EmployeeDetailsController implements Initializable {
         txt_name.setText("");
         txt_dateOfBirth.setValue(null);
         txt_contactNumber.setText("");
+        txt_jobRole.setText("");
+        txt_salary.setText("");
 
 //        Calls the find all methods from the mongodb database
         MongoCursor<Document> cursor = employeeCollection.find().iterator();
@@ -316,8 +328,10 @@ public class EmployeeDetailsController implements Initializable {
                 name = employeeDoc.getString("Name");
                 dateOfBirth = formattedDate;
                 contactNumber = employeeDoc.getString("Contact Number");
+                jobRole = employeeDoc.getString("Job Role");
+                salary = employeeDoc.getString("Salary");
 
-                employee.add(new EmployeeDetailsDAO(defaultId, temporaryId, name, dateOfBirth, contactNumber ));
+                employee.add(new EmployeeDetailsDAO(defaultId, temporaryId, name, dateOfBirth, contactNumber, jobRole, salary));
             }
             employeeList = FXCollections.observableArrayList(employee);
 
@@ -327,8 +341,6 @@ public class EmployeeDetailsController implements Initializable {
 //          close the connection
             cursor.close();
         }
-
-
     }
 
 }
