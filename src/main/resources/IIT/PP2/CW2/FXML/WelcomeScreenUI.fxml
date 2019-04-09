@@ -12,8 +12,8 @@
    <children>
       <Label layoutX="144.0" layoutY="157.0" text="Username" />
       <Label layoutX="144.0" layoutY="199.0" text="Password" />
-      <TextField layoutX="208.0" layoutY="153.0" promptText="Username" />
-      <PasswordField layoutX="208.0" layoutY="195.0" promptText="Password" />
+      <TextField fx:id="txt_username" layoutX="208.0" layoutY="153.0" promptText="Username" />
+      <PasswordField fx:id="txt_password" layoutX="208.0" layoutY="195.0" promptText="Password" />
       <Label layoutX="216.0" layoutY="70.0" text="WELCOME" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -30,5 +30,10 @@
             <Button fx:id="btn_exit" mnemonicParsing="false" onAction="#exitWelcomeScreen" text="Exit" textAlignment="CENTER" />
          </children>
       </HBox>
+      <Label fx:id="lbl_status" contentDisplay="CENTER" layoutX="143.0" layoutY="117.0" prefHeight="20.0" prefWidth="216.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
